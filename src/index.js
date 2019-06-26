@@ -43,6 +43,7 @@ export default class RNPickerSelect extends PureComponent {
         // Custom Modal props (iOS only)
         hideDoneBar: PropTypes.bool,
         doneText: PropTypes.string,
+        doneProps: PropTypes.shape({}),
         onDonePress: PropTypes.func,
         onUpArrow: PropTypes.func,
         onDownArrow: PropTypes.func,
@@ -274,7 +275,7 @@ export default class RNPickerSelect extends PureComponent {
     }
 
     renderDoneBar() {
-        const { doneText, hideDoneBar, onUpArrow, onDownArrow, style } = this.props;
+        const { doneText, hideDoneBar, onUpArrow, onDownArrow, style, doneProps } = this.props;
 
         if (hideDoneBar) {
             return null;
@@ -322,7 +323,7 @@ export default class RNPickerSelect extends PureComponent {
                     testID="done_button"
                 >
                     <View testID="needed_for_touchable">
-                        <Text style={[defaultStyles.done, style.done]}>{doneText}</Text>
+                        <Text style={[defaultStyles.done, style.done]} {...doneProps}>{doneText}</Text>
                     </View>
                 </TouchableWithoutFeedback>
             </View>
